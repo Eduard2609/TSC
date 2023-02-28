@@ -16,3 +16,6 @@ Repository pentru laboratorul de TSC
 	git config --global --list
 
     4) git config --global credential.helper store
+
+    verificare git stauts :
+    git status
