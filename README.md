@@ -7,3 +7,5 @@ Repository pentru laboratorul de TSC
 -Link-urile de pe Slack trebuie citite
 -La acest laborator se va lucra in Ubuntu si ModelSim
 -Prezenta la curs ajuta
+
+-test
