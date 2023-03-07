@@ -19,3 +19,7 @@ Repository pentru laboratorul de TSC
 
     verificare git stauts :
     git status
+
+
+Tema 1
+adaugare un fir numit Res (sumare 6 biti, inmultire 10)
