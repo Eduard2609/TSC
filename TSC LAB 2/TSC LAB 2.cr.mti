@@ -1,0 +1,8 @@
+{C:/Users/Eduard/Desktop/TSC LAB 2/test.v} {1 {vlog -work work -vopt -stats=none {C:/Users/Eduard/Desktop/TSC LAB 2/test.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module test
+
+Top level modules:
+	test
+
+} {} {}}
