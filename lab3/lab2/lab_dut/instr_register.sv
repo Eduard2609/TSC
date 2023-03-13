@@ -21,6 +21,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
   timeunit 1ns/1ns;
 
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
+  result_t res;
 
   // write to the register
   always@(posedge clk, negedge reset_n)   // write into register
@@ -29,8 +30,21 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
         iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
     end
     else if (load_en) begin
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b};
+      iw_reg[write_pointer] = '{opcode, operand_a, operand_b, res};
     end
+
+ always@(*) begin
+    unique case (opcode)
+      PASSA: res = operand_a;
+      PASSB: res = operand_b;
+      ADD:   res = operand_a + operand_b;
+      SUB:   res = operand_a - operand_b;
+      MUL:   res = operand_a * operand_b;
+      DIV:   res = operand_a / operand_b;
+      MOD:   res = operand_a % operand_b;
+      default: res = 0;
+    endcase
+  end
 
   // read from the register
   assign instruction_word = iw_reg[read_pointer];  // continuously read from register
