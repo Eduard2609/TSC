@@ -30,6 +30,15 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
         iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
     end
     else if (load_en) begin
+      // case(opcode)
+      // ZERO: res = 0
+      // PASSA: res = operand_a;
+      // PASSB: res = operand_b;
+      // ADD:   res = operand_a + operand_b;
+      // SUB:   res = operand_a - operand_b;
+      // MULT:   res = operand_a * operand_b;
+      // DIV:   res = operand_a / operand_b;
+      // MOD:   res = operand_a % operand_b;
       iw_reg[write_pointer] = '{opcode, operand_a, operand_b, res};
     end
 
@@ -39,7 +48,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
       PASSB: res = operand_b;
       ADD:   res = operand_a + operand_b;
       SUB:   res = operand_a - operand_b;
-      MUL:   res = operand_a * operand_b;
+      MULT:   res = operand_a * operand_b;
       DIV:   res = operand_a / operand_b;
       MOD:   res = operand_a % operand_b;
       default: res = 0;
