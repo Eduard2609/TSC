@@ -3,14 +3,12 @@
  **********************************************************************/
 
 module top;
-//Directiva de compilator, seteaza timpul de simulare
-  timeunit 1ns/1ns;
+  timeunit 1ns/1ns;//directiva compilator
 
   // user-defined types are defined in instr_register_pkg.sv
   import instr_register_pkg::*;
 
   // clock variables
-  //logic - 4 stari (0,1,x-undifined,z) pe un bit
   logic clk;
   logic test_clk;
 

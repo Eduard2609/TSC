@@ -19,29 +19,33 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
  output instruction_t  instruction_word
 );
   timeunit 1ns/1ns;
-
+ 
+  result_t       result;
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
-  result_t res;
 
-  // Write to the register
-  always @(posedge clk, negedge reset_n) 
+  // write to the register
+  always@(posedge clk, negedge reset_n)   // write into register
     if (!reset_n) begin
-      foreach (iw_reg[i]) 
-        iw_reg[i] = '{opc:ZERO, op_a:0, op_b:0, res:0};
+      foreach (iw_reg[i])
+        iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
     end
     else if (load_en) begin
-      case (opcode)
-        ADD: res = operand_a + operand_b;
-        SUB: res = operand_a - operand_b;
-        MULT: res = operand_a * operand_b;
-        PASSA: res = operand_a;
-        PASSB: res = operand_b;
-        DIV: res = operand_a / operand_b;
-        MOD: res = operand_a % operand_b;
-		ZERO: res = 0; 
-      endcase     
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b, res};
-      end
+	//TODO result 
+      case(opcode) 
+	  	ZERO  : result = 'b0;
+        PASSA : result = operand_a;
+        PASSB : result = operand_b;
+        ADD   : result = operand_a+operand_b;
+        SUB   : result = operand_a-operand_b;
+        MULT  : result = operand_a*operand_b;
+        DIV   : result = operand_a/operand_b;
+        MOD   : result = operand_a%operand_b;
+	  endcase
+      iw_reg[write_pointer] = '{opcode,operand_a,operand_b,result};
+	 
+    end
+
+// Varianta veche
 
 //  always@(*) begin
 //     unique case (opcode)
@@ -55,6 +59,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
 //       default: res = 0;
 //     endcase
 //   end
+
 
   // read from the register
   assign instruction_word = iw_reg[read_pointer];  // continuously read from register
