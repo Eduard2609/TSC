@@ -27,20 +27,20 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
   always @(posedge clk, negedge reset_n) 
     if (!reset_n) begin
       foreach (iw_reg[i]) 
-        iw_reg[i] = '{opc:ZERO, op_a:0, op_b:0, rezultat:0};
+        iw_reg[i] = '{opc:ZERO, op_a:0, op_b:0, res:0};
     end
     else if (load_en) begin
       case (opcode)
-        ADD: rezultat = operand_a + operand_b;
-        SUB: rezultat = operand_a - operand_b;
-        MULT: rezultat = operand_a * operand_b;
-        PASSA: rezultat = operand_a;
-        PASSB: rezultat = operand_b;
-        DIV: rezultat = operand_a / operand_b;
-        MOD: rezultat = operand_a % operand_b;
-		ZERO: rezultat = 0; 
+        ADD: res = operand_a + operand_b;
+        SUB: res = operand_a - operand_b;
+        MULT: res = operand_a * operand_b;
+        PASSA: res = operand_a;
+        PASSB: res = operand_b;
+        DIV: res = operand_a / operand_b;
+        MOD: res = operand_a % operand_b;
+		ZERO: res = 0; 
       endcase     
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b, rezultat};
+      iw_reg[write_pointer] = '{opcode,operand_a,operand_b, res};
       end
 
 //  always@(*) begin
