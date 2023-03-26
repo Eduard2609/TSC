@@ -39,7 +39,7 @@ module instr_register_test
 
     $display("\nWriting values to register stack...");
     @(posedge clk) load_en = 1'b1;  // enable writing to register
-    repeat (10) begin
+    repeat (3) begin
       @(posedge clk) randomize_transaction;
       @(negedge clk) print_transaction;
     end
@@ -47,7 +47,7 @@ module instr_register_test
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
-    for (int i=0; i<=10; i++) begin
+    for (int i=0; i<=2; i++) begin
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
@@ -74,10 +74,10 @@ module instr_register_test
     //
     static int temp = 0;
     operand_a     <= $random(seed)%16;                 // between -15 and 15
-    operand_b     <= $unsigned($random)%16;            // between 0 and 15  
+    operand_b     <= $unsigned($random)%16;            // between 0 and 15
     opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type
-    
-    
+
+    //
 
     write_pointer <= temp++;
   endfunction: randomize_transaction
@@ -93,8 +93,8 @@ module instr_register_test
     $display("Read from register location %0d: ", read_pointer);
     $display("  opcode = %0d (%s)", instruction_word.opc, instruction_word.opc.name);
     $display("  operand_a = %0d",   instruction_word.op_a);
-    $display("  operand_b = %0d", instruction_word.op_b);
-    $display("  rezultat  = %0d", instruction_word.rezultat);
+    $display("  operand_b = %0d\n", instruction_word.op_b);
+    $display("  res= %0d\n", instruction_word.res);
   endfunction: print_results
 
 endmodule: instr_register_test
