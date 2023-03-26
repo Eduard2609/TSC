@@ -61,7 +61,7 @@ module instr_register_test
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
     $display(  "***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***");
     $display(  "***********************************************************\n");
-    //$finish;
+    $finish;
   end
 
   function void randomize_transaction;
