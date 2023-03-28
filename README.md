@@ -23,3 +23,9 @@ Repository pentru laboratorul de TSC
 
 Tema 1
 adaugare un fir numit Res (sumare 6 biti, inmultire 10)
+
+
+Tema 2
+in istr_register_test.sv avem wpointer si rpointer care sunt valori incrementale, trebuie sa le facem random intre 0 si 31
+plus inca un parametru care sa spuna random case care daca ia valoare 0 va fi cazul incremental - incremental, daca ia valoare 1 va fi cazul incremetnal - random, daca ia 2 va fi random - incremental si daca e 3 random random
+plus inca un parametru numit number of transaction (5,7,11)
