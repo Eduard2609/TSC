@@ -115,7 +115,7 @@ module instr_register_test
     $display("  opcode = %0d (%s)", instruction_word.opc, instruction_word.opc.name);
     $display("  operand_a = %0d",   instruction_word.op_a);
     $display("  operand_b = %0d", instruction_word.op_b);
-	  $display("  res = %0d", instruction_word.res);
+	  $display("  result = %0d", instruction_word.result);
   endfunction: print_results
 
 endmodule: instr_register_test
