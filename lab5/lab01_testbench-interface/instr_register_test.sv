@@ -20,8 +20,9 @@ module instr_register_test
 
   timeunit 1ns/1ns;
   parameter NR_OF_TRANSACTION = 11;
-  parameter RANDOM = 2;
-  int seed = 555;
+  parameter RANDOM = 3;
+  parameter SEED = 555;
+  parameter NAME = "nume";
 
   initial begin
     $display("\n\n***********************************************************");
@@ -74,6 +75,7 @@ module instr_register_test
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
     $display(  "***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***");
     $display(  "***********************************************************\n");
+    $display("Name of the file: %s", NAME);
     $finish;
   end
 
@@ -97,7 +99,7 @@ module instr_register_test
 		write_pointer = write_pointer + 1;
 	  end
    
-    operand_a     <= $random(seed)%16;                 // between -15 and 15
+    operand_a     <= $random(SEED)%16;                 // between -15 and 15
     operand_b     <= $unsigned($random)%16;            // between 0 and 15
     opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type
     
@@ -116,6 +118,7 @@ module instr_register_test
     $display("  operand_a = %0d",   instruction_word.op_a);
     $display("  operand_b = %0d", instruction_word.op_b);
 	  $display("  result = %0d", instruction_word.result);
+
   endfunction: print_results
 
 endmodule: instr_register_test

@@ -29,3 +29,9 @@ Tema 2
 in istr_register_test.sv avem wpointer si rpointer care sunt valori incrementale, trebuie sa le facem random intre 0 si 31
 plus inca un parametru care sa spuna random case care daca ia valoare 0 va fi cazul incremental - incremental, daca ia valoare 1 va fi cazul incremetnal - random, daca ia 2 va fi random - incremental si daca e 3 random random
 plus inca un parametru numit number of transaction (5,7,11)
+
+Tema 3 
+Functie check results care va prelua rezultatul din instruct_word si va calcula resultatul aspetpat si il va compara cu cel primit 
+op a si op b -> resultat asteptat
+daca toate au trecut  dam print la test passed
+daca dom astea una a picat, dam test fail
