@@ -82,7 +82,9 @@ module instr_register_test #(parameter NUMBER_OF_TRANSACTIONS = 11, parameter ra
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
 
-      // cov_calc.sample();
+      //sample the coverpoints
+      // cov_calc.sample(); 
+
 
       if(random_case == 0 || random_case == 2) begin
         @(posedge clk) read_pointer = $unsigned($urandom)%32;
