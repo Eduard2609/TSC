@@ -17,7 +17,7 @@ if {[file isdirectory work]} {
 if {$compile_on || [batch_mode] == 0} {
   vlib work
   vlog -sv -timescale "1ps/1ps" -work work       -f sources.txt
-  #vlog -sv -timescale "1ps/1ps" -cover bcesft -work work       -f sources.txt
+  # vlog -sv -timescale "1ps/1ps" -cover bcesft -work work       -f sources.txt
 }
 
 # Load project
