@@ -1,0 +1,6 @@
+../../colocviu/lab_dut/instr_register_pkg.sv   	                +incdir+../../lab_dut
+../../colocviu/lab_dut/instr_register.sv   	                +incdir+../../lab_dut
+
+
+../../colocviu/lab01_testbench-interface/top.sv                    +incdir+../lab01_testbench-interface
+../../colocviu/lab01_testbench-interface/instr_register_test.sv    +incdir+../lab01_testbench-interface
